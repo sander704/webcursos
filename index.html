@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <!-- Incluye el CSS de Bootstrap -->
+     <link rel="stylesheet" href="style1.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: rgb(226, 226, 226);">
+    <br><br>
+    <center><h1 style="background-color: rgb(154, 233, 226);width: 600px;"></h1></center>
+    <br><br>
+    <div class="container mt-5">
+        <h2 style="background-color: blue; color:antiquewhite" class="text-center">Inicio de Sesión</h2>
+        <hr>
+        <center>
+        <section class="h-100 gradient-form" style="background-color: #eee;">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-xl-10">
+                        <div class="card rounded-3 text-black">
+                            <div class="row g-0">
+                                <div class="col-lg-6">
+                                    <div class="card-body p-md-5 mx-md-4">
+                                        <div class="text-center">
+                                            
+                                            <h4 class="mt-1 mb-5 pb-1">Curso Análisis de Datos</h4>
+                                        </div>
+                                        <form id="UserLoginForm" class="login-form">
+                                            <p><b> Por favor ingrese a su cuenta</b></p>
+                                            <div data-mdb-input-init class="form-outline mb-4">
+                                                <input type="text" id="username" class="form-control" name="username" placeholder="" required />
+                                                <label class="form-label" for="username">Usuario</label>
+                                            </div>
+                                            <div data-mdb-input-init class="form-outline mb-4">
+                                                <input type="password" id="password" class="form-control" name="password" required />
+                                                <label class="form-label" for="password">Contraseña</label>
+                                            </div>
+                                            <div class="text-center pt-1 mb-5 pb-1">
+                                                <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Iniciar sesión</button>
+                                            </div>
+                                            
+                                            <div id="error-message" style="color: red; margin-top: 10px;"></div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 d-flex justify-content-center align-items-center gradient-custom-2">
+                                    <div class="text-center">
+                                        <img src="img/logo.png" style="width: 250px;" alt="logo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </center>
+    </div>
+
+    <!-- Incluye JavaScript de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    # User Login Script
+
+<script>
+    var users = [
+        { username: "sander@gmail.com", password: "pass1" },
+        { username: " yoservislopez@gmail.com", password: "Gc9#sY2" },
+        { username: "nelidaccj@gmail.com", password: "qsc@3412" },
+        { username: "cmasosanchez@gmail.com", password: "Ht8?cL1" },
+        { username: "melvisgm0300@gmail.com", password: "Kp9@xR2" },
+        { username: " ludmila.martnezleyva@gmail.com", password: "Vq4@nZ7#" },
+        { username: "birsysuarez@infomed.sld.cu", password: "Jf3#rK6@" },
+        { username: " idalmisgutierrez@gmail.com", password: "Ys5@cT8" },
+        { username: "mercedeszamoramallet@gmail.com", password: "Bh7*wM2" },
+        { username: "  aymeedamian@gmail.com", password: "Zx4%dL9" },
+        { username: "maylenj5@nauta.cu", password: "Jf3#rK6" },
+        { username: "alebor30@cujae.cu", password: "Rc1!nV6" },
+        { username: " anisleyrr@gmail.com", password: "Zx4%dL9" },
+        { username: "  mercygisela@giron.cu", password: "Bh7wM2" },
+        { username: " krnogueraraujo@gmail.com", password: "Yd6!bS4" },
+        { username: "lisetbaromar@gmail.com", password: "Fp2%uM9" },
+        { username: " musibay5@gmail.com", password: "pRw7tN5" },
+        { username: " aramislopez@gmail.com", password: "Xk3@hD8" },
+        { username: "raimy1970@gmail.com", password: "Gp8#lZ2" },
+        { username: "leyai561@gmail.com", password: "Gp8#lZ2" },
+        { username: "javier20@gmail.com", password: "   jH4@xR9" }
+    ];
+
+
+    
+
+
+
+
+
+  
+ 
+
+
+
+
+
+
+
+
+
+    
+   
+   
+  
+    
+  
+    
+   
+  
+   
+   
+    
+
+
+
+
+    document.getElementById("UserLoginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting traditionally
+        
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var user = users.find(user => user.username === username && user.password === password);
+
+        if (user) {
+            var date = new Date();
+            var logEntry = `Time: ${date.toISOString()}, User: ${username}\n`;
+
+            // Send the log to the server
+            sendLog(logEntry);
+
+            // Show welcome alert with username
+            alert(`Welcome to the course, ${username}!`);
+            
+            // Clear input fields and labels after successful login
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+            document.querySelectorAll(".form-label").forEach(label => label.textContent = "");
+
+            // Redirect after 5 seconds
+            setTimeout(function() {
+                window.location.href = "inicio.html";
+            }, 2000);
+        } else {
+            document.getElementById("error-message").textContent = "Incorrect username or password.";
+            if (!users.some(user => user.username === username)) {
+                alert("User not registered");
+            }
+        }
+    });
+
+    function sendLog(logEntry) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "log.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("logEntry=" + encodeURIComponent(logEntry));
+    }
+</script>
+
+
+</body>
+</html>
+
+
+<!-- Para contraseñas 
+A3b!x7z
+k9#Lq2p
+T@5mYq1
+j8&Fv4n
+R6^tZs3
+w1*Qe7h
+P0$kXj2
+z4#Nf8m
+H2!yLp5
+e7@Rz9b
+M3^tQw6
+n1&Jk8v
+L5*Xr0p
+q9#Dg3s
+S2!hYf4
+x8@Wj1k
+C6^mVq7
+b0*Zt5n
+K4#Lp2j
+F3!yRw9
+j2&Qe6h
+T1$zXk8
+r7^Hn4p
+P5!wJq3
+a8#Fv0m
+W2*Lq9t
+s6^Rk1j
+Z3@xYp5
+c0!Nf7b
+Q4#Jw2v-->
+
+
+
+
+
+
