@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)https://estadistica-dma.ulpgc.es/cursoR4ULPGC/1-presentacion.html#%C2%BFcu%C3%A1l_es_el_origen_de_r -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<meta name="generator" content="pandoc">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+<title>Presentación del Curso: El entorno estadístico R (R4ULPGC)</title>
+
+<script src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/jquery.min.js.descarga"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/united.min.css" rel="stylesheet">
+<script src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/bootstrap.min.js.descarga"></script>
+<script src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/html5shiv.min.js.descarga"></script>
+<script src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/respond.min.js.descarga"></script>
+<script src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/jquery-ui.min.js.descarga"></script>
+<link href="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/jquery.tocify.css" rel="stylesheet">
+<script src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/jquery.tocify.js.descarga"></script>
+<script src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/tabsets.js.descarga"></script>
+<link href="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/textmate.css" rel="stylesheet">
+<script src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/highlight.js.descarga"></script>
+<link href="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/all.css" rel="stylesheet">
+<link href="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/v4-shims.css" rel="stylesheet">
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/styles.css" type="text/css">
+
+<script type="text/javascript" src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/MathJax.js.descarga"></script><style type="text/css">.MathJax_Preview {color: #888; display: contents}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #1f00cc; font-style: italic}
+</style><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #001fcc; border: 1px solid #2b02df; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body><div id="MathJax_Message" style="display: none;"></div>
+
+<style type="text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+<ul id="" class=""><li class="" 
+  data-unique="¿qué_es_r">¿Qué es R?</li></ul><ul id="" class=""><li class="tocify-item list-group-item" data-unique="¿cómo_puedo_conseguir_r" style="cursor: pointer;">¿Cómo puedo conseguir R?</li></ul><ul id="tocify-header2" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="¿qué_análisis_estadísticos_puedo_hacer_con_r" style="cursor: pointer;">¿Qué análisis estadísticos puedo hacer con R?</li></ul><ul id="tocify-header3" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="r_es_software_libre_¿es_fiable" style="cursor: pointer;">R es software libre. ¿Es fiable?</li></ul><ul id="tocify-header4" class="tocify-header list-group"><li class="tocify-item list-group-item active" data-unique="¿cuál_es_el_origen_de_r" style="cursor: pointer;">¿Cuál es el origen de R?</li></ul><ul id="tocify-header5" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="¿cómo_puedo_trabajar_con_r" style="cursor: pointer;">¿Cómo puedo trabajar con R?</li><ul class="tocify-subheader list-group" data-tag="3" style=""><li class="tocify-item list-group-item" data-unique="mediante_la_terminal">Mediante la terminal.</li><li class="tocify-item list-group-item" data-unique="mediante_la_gui_(graphics_user_interface)_del_programa">Mediante la GUI (Graphics User Interface) del programa.</li><li class="tocify-item list-group-item" data-unique="mediante_rstudio">Mediante Rstudio</li><li class="tocify-item list-group-item" data-unique="mediante_sistemas_basados_en_menús">Mediante sistemas basados en menús.</li></ul></ul><ul id="tocify-header6" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="¿cuál_es_la_mejor_forma_de_trabajar_con_r" style="cursor: pointer;">¿Cuál es la mejor forma de trabajar con R?</li></ul><ul id="tocify-header7" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="en_cualquier_caso_voy_a_seguir_utilizando_otro_paquete_estadístico,_¿merece_la_pena_el_esfuerzo_de_aprender_r" style="cursor: pointer;">En cualquier caso voy a seguir utilizando otro paquete estadístico, ¿merece la pena el esfuerzo de aprender R?</li></ul><ul id="tocify-header8" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="¿se_usa_r_fuera_de_la_universidad">¿Se usa R fuera de la universidad?</li></ul><ul id="tocify-header9" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="¿como_puedo_seguir_aprendiendo_r" style="cursor: pointer;">¿Como puedo seguir aprendiendo R?</li></ul><ul id="tocify-header10" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="¿debo_citar_r_si_lo_uso_en_mis_trabajos_o_publicaciones" style="cursor: pointer;">¿Debo citar R si lo uso en mis trabajos o publicaciones?</li></ul><ul id="tocify-header11" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="¿tiene_r_presencia_en_las_redes_sociales" style="cursor: pointer;">¿Tiene R presencia en las redes sociales.?</li></ul><ul id="tocify-header12" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="¿como_estar_al_día_con_las_actualizaciones_de_r">¿Como estar al día con las actualizaciones de R?</li></ul><ul id="tocify-header13" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="¿puedo_utilizar_r_sin_instalarlo_en_el_ordenador">¿Puedo utilizar R sin instalarlo en el ordenador?</li></ul><ul id="tocify-header14" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="adenda:_¿puede_r_sustituir_a_matlab">Adenda: ¿puede R sustituir a Matlab?</li></ul></div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore"> El entorno estadístico R </h1>
+
+
+
+
+<div id="que-es-r" class="section level2">
+<div name="¿qué_es_r" data-unique="¿qué_es_r"></div><h2></h2>
+<p>R es muchas cosas:</p>
+<ul>
+<li><p>Es una simple calculadora.</p></li>
+<li><p>Es un programa para el análisis de datos, que dispone de procedimientos específicos para:</p>
+<ul>
+<li>Estadística descriptiva.</li>
+<li>Inferencia estadística.</li>
+<li>Ajuste de Modelos.<br>
+</li>
+<li>Estadística espacial.</li>
+<li>Epidemiología.</li>
+<li>Análisis de señales.<br>
+</li>
+<li>Genética</li>
+<li>Econometría</li>
+<li>Series Temporales</li>
+<li>Ecuaciones estructurales</li>
+<li>Métodos bayesianos</li>
+<li>…</li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li><p>Es una herramienta de cálculo numérico con procedimientos para el álgebra lineal, las ecuaciones diferenciales, la optimización, etc.</p></li>
+<li><p>Es un <strong>lenguaje de programación</strong> con las siguientes características:</p>
+<ul>
+<li>Actúa como <em>interfaz</em> para procedimientos computacionales muy diversos.</li>
+<li>Es <em>interactivo</em>.</li>
+<li>Su modelo de programación es <em>funcional</em>.</li>
+<li>Es <em>orientado a objetos</em>. Todo en R es un <em>“objeto”</em>.</li>
+<li>Es <em>modular</em>, construido a partir de mútiples “piezas” ajustadas a un formato estándar.</li>
+<li>Es <em>colaborativo</em>: es software libre, abierto a la participación de quien desee aportar su conocimiento y experiencia.<br><br></li>
+</ul></li>
+<li><p>Es una parte integral del proceso de <a href="http://biostatistics.oxfordjournals.org/content/10/3/405.full">investigación reproducible</a>.</p></li>
+<li><p>Es sobre todo un <strong>entorno de trabajo</strong> en el que se pueden manipular múltiples elementos: archivos de datos, gráficos, accesos a internet, … Este entorno de trabajo cuenta con la indiscutible ventaja de ser idéntico en los tres grandes sistemas operativos: Linux, Windows y Mac.</p></li>
+</ul>
+<p><br><br><br></p>
+<hr>
+</div>
+<div id="como-puedo-conseguir-r" class="section level2">
+<div name="¿cómo_puedo_conseguir_r" data-unique="¿cómo_puedo_conseguir_r"></div><h2>¿Cómo puedo conseguir R?</h2>
+<p>R es software libre y por tanto no es necesario pagar para adquirirlo. Se puede descargar directamente desde la web <a href="https://www.r-project.org/" class="uri">www.r-project.org</a>:</p>
+<div class="figure">
+<img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/r-projectWeb.png" alt="web R-project">
+<p class="caption">web R-project</p>
+</div>
+<p><br><br><br></p>
+<hr>
+</div>
+<div id="que-analisis-estadisticos-puedo-hacer-con-r" class="section level2">
+<div name="¿qué_análisis_estadísticos_puedo_hacer_con_r" data-unique="¿qué_análisis_estadísticos_puedo_hacer_con_r"></div><h2>¿Qué análisis estadísticos puedo hacer con R?</h2>
+<p>Todos los que el usuario pueda desear. La instalación básica de R incluye procedimientos para prácticamente todos los métodos estadísticos tradicionales: estadística descriptiva, gráficos, inferencia, regresión, análisis de la varianza, …</p>
+<p>Además es posible descargar en cualquier momento desde la web de R nuevas <strong>librerías</strong> o <strong>“packages”</strong> que incrementan los procedimientos disponibles. En junio de 2014, en la web <em>“oficial”</em> de R (CRAN, <em>Comprehensive R Archive Network</em>), hay 5663 librerías que pueden descargarse libremente.</p>
+<p>Las librerías se encuentran organizadas en grupos (<a href="http://cran.es.r-project.org/web/views/">Task Views</a>) en función de su área de aplicación.</p>
+<div class="figure">
+<img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/taskViews.png" alt="Task Views">
+<p class="caption">Task Views</p>
+</div>
+<p><br><br></p>
+<p>Hay además numerosas iniciativas orientadas al uso de R en campos específicos. Muchas de ellas cuentan con sus propios repositorios de datos y procedimientos estadísticos implementandos en librerías:</p>
+<ul>
+<li><p><a href="http://ropensci.org/">R Open Science</a>: librerías para el acceso a datos públicos.</p></li>
+<li><p><a href="http://www.bioconductor.org/">Bioconductor</a>: Bioinformática con R, muy orientado a genómica.</p></li>
+<li><p><a href="http://www.flr-project.org/">Fisheries Library</a>: análisis de pesquerías con R.</p></li>
+<li><p><a href="http://www.rmetrics.org/">Rmetrics</a>: Análisis de mercados financieros con R.</p></li>
+<li><p><a href="https://geodacenter.asu.edu/r-old">R-Geo</a>: Estadística espacial con R</p></li>
+<li><p><a href="https://github.com/trending?l=r">Github</a>: paquetes en desarrollo, pero listos para su uso.</p></li>
+</ul>
+<div class="remark">
+<p>Aprender R va mucho más allá de pasarse a este software porque es gratuito. Que sea gratuito es innegable que ayuda a su difusión. Pero la gran ventaja de R es la disponibilidad actual de casi cualquier procedimiento estadístico imaginable, así como sus enormes perspectivas de desarrollo futuro. R es ya hoy el lenguaje universal del análisis de datos en todos los ámbitos.</p>
+</div>
+<p><br><br></p>
+<hr>
+</div>
+<div id="r-es-software-libre.-es-fiable" class="section level2">
+<div name="r_es_software_libre_¿es_fiable" data-unique="r_es_software_libre_¿es_fiable"></div><h2>R es software libre. ¿Es fiable?</h2>
+<div class="figure">
+<img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/Nytimes2.png" alt="R-Logo">
+<p class="caption"></p>
+</div>
+<p>En el <a href="http://www.nytimes.com/2009/01/07/technology/business-computing/07program.html?pagewanted=all">New York Times de enero de 2009</a> se entrevista a una directiva de SAS Institute (Anne H. Milley, directora de marketing), que señala:</p>
+<br>
+<div style="font-style: italic; margin-left:50px;color:#B40404;">
+“Yo creo que (R) se dirige a un nicho de mercado ocupado por analistas de alto nivel que requieren código libre y fácilmente disponible. Pero nosotros tenemos clientes que construyen reactores para aviones. Y me tranquiliza saber que no se ha usado sofware libre cuando subo a un avión”
+</div>
+<p><br> En el mismo artículo responde Frank Harrell, catedrático de Bioestadística en la Universidad de Vanderbilt (EEUU):</p>
+<br>
+<div style="font-style: italic; margin-left:50px;color:#B40404;">
+“Es interesante observar que SAS Institute opine que para construir motores de avión debemos depositar nuestra confianza en software no sujeto a revisión por pares y que incluye implementaciones ocultas de métodos analíticos que no pueden ser reproducidos por terceros”
+</div>
+<p><br><br> Precisamente por su carácter de software libre, el código de R es completamente abierto; cualquiera puede ver qué es lo que hace cada función y comprobar si lo hace bien. La amplia base de usuarios con que cuenta el programa en la actualidad produce como resultado que cualquier error sea detectado y corregido en tiempo record.</p>
+<hr>
+</div>
+<div id="cual-es-el-origen-de-r" class="section level2">
+<div name="¿cuál_es_el_origen_de_r" data-unique="¿cuál_es_el_origen_de_r"></div><h2>¿Cuál es el origen de R?</h2>
+<ul>
+<li>R comenzó a ser desarrollado en 1992 por Robert Gentleman y Ross Ihaka, de departamento de Estadística de la Universidad de Auckland (Nueva Zelanda), con el objetivo de disponer de un lenguaje para enseñar cursos introductorios de estadística. El nombre del programa deriva de las iniciales de los nombres de sus dos autores.</li>
+</ul>
+<div class="figure">
+<img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/Ross&amp;Robert.png" alt="RossRobert">
+<p class="caption">RossRobert</p>
+</div>
+<ul>
+<li><p>Deciden adoptar una sintaxis idéntica a la del <a href="http://www.research.att.com/articles/featured_stories/2013_09/201309_SandR.html">lenguaje S</a>, desarrollado por <a href="http://en.wikipedia.org/wiki/John_Chambers_(statistician)">John Chambers</a> y Richard Becker en los laboratorios Bell.</p></li>
+<li><p>La primera versión del programa sale en 1994; en 1995 adopta una licencia de software libre GNU. La difusión del programa se realiza <em>boca a oreja</em>.</p></li>
+<li><p>En 1996 publican en el <em>Journal of Computational and Graphical Statistics</em> un artículo describiendo el programa: <a href="http://www.aliquote.org/cours/2012_biomed/biblio/Ihaka1996.pdf">R: A language for data analysis and graphics</a></p></li>
+<li><p>En 1996 se crea una lista de correo en la Escuela Politécnica de Zurich. En 1997 se funda el <a href="http://www.r-project.org/contributors.html">R-Core group</a> (grupo de voluntarios que se encargan de mantener el código del programa), y en 1998 se abre el primer repositorio de R en la Universidad Tecnológica de Viena.</p></li>
+<li><p>Desde entonces el número de <a href="http://www.r-project.org/conferences/useR-2008/slides/Fox.pdf">participantes</a> en el proyecto se ha incrementado notablemente, así como el número de <a href="http://cran.r-project.org/mirrors.html">repositorios disponibles</a>.</p></li>
+<li><p>En el año 2000 se libera la primera versión estable de R, la 1.0. La versión actual es la 3.1.0 (<em>Spring Dance</em>).</p></li>
+<li><p>Desde el año 2000 a la actualidad el número de usuarios de R se ha ido incrementando exponencialmente, así como el número de personas que contribuyen aportando nuevas librerías.</p></li>
+<li><p>En la actualidad, Ihaka y otros colaboradores trabajan en una versión completamente renovada de R, con mejor gestión de recursos y mayor rendimiento en entornos con multiprocesadores.</p></li>
+</ul>
+<p><br><br> En palabras del Dr.&nbsp;Ihaka (<a href="http://www.nzherald.co.nz/nz/news/article.cfm?c_id=1&amp;objectid=10551243">Entrevista en <em>The New Zealand Herald</em> de junio de 2009</a>), el desarrollo de R tiene mucho que ver con la forma en que la gente consigue un coche nuevo en Nueva Zelanda: <br><br></p>
+<div style="font-style: italic; margin-left:50px;color:#B40404;">
+“Si usted va a un depósito de chatarra, y sale de allí con un automóvil inservible, basta con que se ponga en la carretera mirándolo con cara de impotencia para que la gente, que es toda del tipo”hágalo usted mismo“, se pare y le ayude; después de un par de horas tendrá usted un muy buen coche. Con R sucedió algo parecido: iniciamos el proyecto, lo colgamos en internet y después de unos años tenemos una excelente pieza de software”
+</div>
+<p><br><br><br></p>
+<hr>
+</div>
+<div id="como-puedo-trabajar-con-r" class="section level2">
+<div name="¿cómo_puedo_trabajar_con_r" data-unique="¿cómo_puedo_trabajar_con_r"></div><h2>¿Cómo puedo trabajar con R?</h2>
+<p>Existen múltiples formas de interactuar con R:</p>
+<div id="mediante-la-terminal." class="section level3">
+<div name="mediante_la_terminal" data-unique="mediante_la_terminal"></div><h3>Mediante la terminal.</h3>
+<p>Una terminal es una simple ventana del sistema operativo, que arranca R y nos deja el <em>“prompt”</em> esperando por nuestras instrucciones:</p>
+<div class="figure">
+<img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/terminal.png" alt="terminal">
+<p class="caption">terminal</p>
+</div>
+<p>Obviamente este procedimiento deja al usuario prácticamente <em>“solo ante el peligro”</em>: no hay menús de ayuda, ni de configuración, ni de edición, …</p>
+<p><br><br><br></p>
+</div>
+<div id="mediante-la-gui-graphics-user-interface-del-programa." class="section level3">
+<div name="mediante_la_gui_(graphics_user_interface)_del_programa" data-unique="mediante_la_gui_(graphics_user_interface)_del_programa"></div><h3>Mediante la GUI (Graphics User Interface) del programa.</h3>
+<p>las versiones de R para Windows y Mac, cuentan con sus propias interfaces gráficas de usuario que integran una consola de resultados, un editor de código, algún menú de ayuda, y cierta gestión de gráficos.</p>
+<div id="gui-en-windows" class="section level4">
+<h4>GUI en Windows:</h4>
+<p><img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/Rgui-MDI.png" alt="RGUI-Windows"> <br><br></p>
+</div>
+<div id="gui-en-mac" class="section level4">
+<h4>GUI en MAC</h4>
+<div class="figure">
+<img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/RGUI-Mac.png" alt="RGUI-Mac">
+<p class="caption">RGUI-Mac</p>
+</div>
+<p><br><br><br></p>
+</div>
+</div>
+<div id="mediante-rstudio" class="section level3">
+<div name="mediante_rstudio" data-unique="mediante_rstudio"></div><h3>Mediante Rstudio</h3>
+<p>Rstudio es una interfaz gráfica para R desarrollada a comienzoa de 2011 por un grupo de informáticos y estadísticos de Boston (EEUU). La versión Open Source puede descargarse libremente desde <a href="http://www.rstudio.com/products/rstudio/">www.rstudio.com</a>:</p>
+<div class="figure">
+<img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/rstudioWeb.png" alt="RstudioWeb">
+<p class="caption">RstudioWeb</p>
+</div>
+<p><br></p>
+<p>En los tres últimos años ha experimentado un notable desarrollo y se ha convertido, de facto, en la GUI por excelencia para R. Dispone de versiones (idénticas en su funcionamiento) para Linux, Mac y Windows.</p>
+<p><br></p>
+<p>La interfaz de Rstudio permite un acceso más cómodo a la edición de código, los resultados, los gráficos, la descarga de librerías, los objetos en memoria, etc. Además permite generar muy fácilmente informes con los procedimientos y resultados de nuestros análisis en varios formatos (html, pdf y word).</p>
+<p><br></p>
+<div class="figure">
+<img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/rstudio.png" alt="Rstudio">
+<p class="caption">Rstudio</p>
+</div>
+<p><br><br></p>
+<p><strong>Ni Rstudio ni las GUI estándar de R cuentan con ningún menú para el acceso a procedimientos estadísticos. Es el usuario el que debe escribir un “script” (un programa) en el que encadene los comandos necesarios para llevar a cabo el análisis que se propone realizar.</strong></p>
+<p>Normalmente un <em>script</em> se estructura en varias secciones (no necesariamente en este orden):</p>
+<ul>
+<li><p>Cabecera: donde se cargan las librerías que se van a utilizar y el usuario define sus propias funciones (si las necesita).</p></li>
+<li><p>Lectura de datos: se define el directorio de trabajo y se cargan los datos, bien directamente declarándolos en el propio script, o importándolos desde uno o varios archivos externos.</p></li>
+<li><p>Procesamiento de datos: transformaciones de los datos si se requiere, asignación de etiquetas, identificación de valores perdidos, etc.</p></li>
+<li><p>Aplicación de procedimientos estadísticos.</p></li>
+<li><p>Generación de informe de resultados.</p></li>
+</ul>
+<p><br><br> La siguiente captura de pantalla muestra un script muy simple que declara los valores observados de dos variables <em>x</em> e <em>y</em> en sendas muestras de tamaño 10 y realiza un t-test: <br><br></p>
+<p><img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/ejemplottest.png" alt="ejemplo t-test"> <br><br><br></p>
+</div>
+<div id="mediante-sistemas-basados-en-menus." class="section level3">
+<div name="mediante_sistemas_basados_en_menús" data-unique="mediante_sistemas_basados_en_menús"></div><h3>Mediante sistemas basados en menús.</h3>
+<div id="rcommander" class="section level4">
+<h4>Rcommander:</h4>
+<p><a href="http://www.rcommander.com/">RCommander</a>] es una interfaz gráfica desarrollada originalmente por John M. Fox en la Universidad McMaster en Canadá para sus alumnos de psicología, y que rápidamente fue adoptada en otros ámbitos por su facilidad de uso. Esta interfaz cuenta con menús desplegables para el acceso a los procedimientos estadísticos. RCommander se caracteriza por ser ampliable, esto es, se le pueden añadir menús nuevos o complementar los que ya tiene. Resulta una alternativa interesante para usuarios esporádicos de R que se limiten a hacer análisis estadísticos estándar.</p>
+<div class="figure">
+<img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/rcommander.png" alt="RCommander">
+<p class="caption">RCommander</p>
+</div>
+<p><br><br></p>
+</div>
+<div id="deducer" class="section level4">
+<h4>DeduceR</h4>
+<p><a href="http://www.deducer.org/pmwiki/pmwiki.php?n=Main.DeducerManual">Deducer</a> es otra interfaz para R con un sistema de menús para el acceso a los métodos estadísticos que permite que los no expertos en R puedan llevar a cabo análisis estadísticos con facilidad. Asimismo pretende ayudar a los usuarios expertos simplificando algunas tareas complejas de forma que se puedan realizar con unos pocos clicks de ratón. El sistema de menús de DeduceR se ha construido intencionadamente de forma que sea muy similar a SPSS.</p>
+<p><br> <strong>Deducer en Windows:</strong></p>
+<p><br> <img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/deducerscreen_rgui1.png" alt="Deducer Windows"> <br></p>
+<p><strong>Deducer en Mac</strong>:</p>
+<p><br> <img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/DeducerScreenShot_4.png" alt="Deducer Mac"></p>
+<p><br><br></p>
+</div>
+<div id="rattle" class="section level4">
+<h4>Rattle</h4>
+<p><a href="https://code.google.com/p/rattle/">Rattle</a> es otra interfaz para R muy centrada en el <em>data mining</em>. Dispone de un sistema de menús y pestañas que permite acceder a los datos, explorarlos, ajustar modelos, hacer tests de significación, …</p>
+<p><br> <img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/Rattle.png" alt="Rattle"> <br><br><br></p>
+</div>
+<div id="jamovi" class="section level4">
+<h4>Jamovi</h4>
+<p><a href="https://www.jamovi.org/features.html">Jamovi</a> Interfaz (por ahora) muy elemental para llevar a cabo algunos procedimientos implementados en R: exploración (gráficos y tablas básicos), t-test, anova, regresión. Se encuentra en desarrollo y planea incluir módulos para análisis estadísticos más sofisticados. No es necesario saber R para utilizar esta interfaz, ya que se maneja completamente a través de un sistema de menús.</p>
+
+<p><br><br><br></p>
+</div>
+<div id="bluesky" class="section level4">
+<h4>BlueSky:</h4>
+<p><a href="https://www.blueskystatistics.com/">BlueSky</a> es otra interfaz para ejecutar análisis estadísticos con R sin saber R. Está desarrollada por la empresa <em>BlueSky Statistics</em> que ofrece una versión <em>open source</em> de uso gratuito y una versión de pago, que tiene soporte telefónico y atención individualizada (de momento en inglés). Sólo funciona en Windows.</p>
+<p><br><br><br></p>
+</div>
+<div id="radiant" class="section level4">
+<h4>Radiant</h4>
+<p><a href="https://radiant-rstats.github.io/docs/">Radiant</a> Interfaz para R basada en un navegador; se ejecuta desde Chrome, Firefox y otros navegadores. Contiene menús en los que elegir diversos procedimientos estadísticos. Aunque su orientación principal es hacia análisis estadístico de datos económicos, puede utilizarse con cualquier tipo de datos. Al igual que la aplicación anterior, Radiant se encuentra en pleno desarrollo y se actualiza constantemente. No necesario saber R para manejar esta aplicación.</p>
+
+<p><br><br><br></p>
+<hr>
+</div>
+</div>
+</div>
+<div id="cual-es-la-mejor-forma-de-trabajar-con-r" class="section level2">
+<div name="¿cuál_es_la_mejor_forma_de_trabajar_con_r" data-unique="¿cuál_es_la_mejor_forma_de_trabajar_con_r"></div><h2>¿Cuál es la mejor forma de trabajar con R?</h2>
+<p>Depende:</p>
+<ul>
+<li><p>Si sólo se realizan análisis estadísticos de forma esporádica, y estos análisis corresponden a los procedimientos más “tradicionales”, puede ser suficiente con cualquiera de los sistemas basados en menús (particularmente Rcommander o DeduceR).</p></li>
+<li><p>Si el usuario desea:</p>
+<ul>
+<li><p>Ser capaz de manipular sus datos, con entera libertad para transformarlos, agregarlos, desagregarlos, capturarlos “en tiempo real” desde distintas aplicaciones.</p></li>
+<li><p>Utilizar librerías con procedimientos novedosos, o que no están incluídos en los menús de los sistemas citados (téngase en cuenta que hay casi 6000 librerías en R. Es imposible construir un sistema de menús que las incluya a todas).</p></li>
+<li><p>Ser capaz de utilizar en el futuro procedimientos estadísticos que aún están en desarrollo, y que casi seguramente terminarán implementándose en R.</p></li>
+<li><p>Ser capaz de aplicar los procedimientos que, cada vez con mayor frecuencia, se implementan para acompañar a libros de estadística (u otras disciplinas) que se apoyan en R.</p></li>
+<li><p>Elaborar sus propios procedimientos, programándolos.</p></li>
+<li><p>Elaborar informes o artículos que incluyan texto, datos, gráficos, funciones y resultados.</p></li>
+</ul></li>
+</ul>
+<p>entonces deberá utilizar Rstudio y desarrollar sus propios scripts. Esta vía es más compleja, pero con diferencia, mucho más productiva a medio-largo plazo.</p>
+<p><br><br></p>
+<p><strong>Para principiantes en R</strong>: el gran problema al que se enfrentan los principiantes es el desconocimiento del lenguaje y, por ende, de los comandos disponibles para la entrada de datos y la ejecución de procedimientos estadísticos. Una estrategia útil de trabajo es la siguiente:</p>
+<ol style="list-style-type: decimal">
+<li><p>Aprender los fundamentos básicos de la sintaxis de R. R es un lenguaje y como todo lenguaje tiene sus componentes y su gramática. Los componentes son las clases de objetos que maneja R y la gramática es el conjunto de reglas sintánticas que permiten la manipulación de tales objetos a través del uso de funciones.</p></li>
+<li><p>Aprender las “palabras” del lenguaje: ¿qué palabras hay que utilizar para leer unos datos que están en excel, para llevar a cabo un análisis de la varianza o ajustar un modelo de regresión? Para ello:</p>
+<ul>
+<li><p>podemos usar algún <em>diccionario</em> que nos resulte cómodo: una <a href="https://dl.dropboxusercontent.com/u/7610774/CursoR/ReferenciaRapidaR.pdf">guía de referencia</a>, alguna página web como <a href="http://www.rdocumentation.org/">Rdocumentation</a> o <a href="http://www.statmethods.net/">Quick-R</a></p></li>
+<li><p>podemos utilizar alguna interfaz con menús como <em>Rcommander</em> o <em>DeduceR</em>. Ambas generan el script de código que lleva a cabo el procedimiento que seleccionemos a través del menú. Mirando el script descubrimos qué comandos ha utilizado R para realizar esta tarea. Podemos guardar ese script, añadirle comentarios y ejecutarlo/reejecutarlo cuantas veces necesitemos desde la consola de R o desde Rstudio.</p></li>
+</ul></li>
+<li><p>A medio plazo, veremos que nuestro conocimiento de R ha aumentado lo suficiente como para poder usar el programa con cierta fluidez, incorporando funciones de distintos paquetes e incluso siendo capaces de preparar funciones “a medida” para nuestros problemas.</p></li>
+</ol>
+<p><br><br><br></p>
+<hr>
+</div>
+<div id="en-cualquier-caso-voy-a-seguir-utilizando-otro-paquete-estadistico-merece-la-pena-el-esfuerzo-de-aprender-r" class="section level2">
+<div name="en_cualquier_caso_voy_a_seguir_utilizando_otro_paquete_estadístico,_¿merece_la_pena_el_esfuerzo_de_aprender_r" data-unique="en_cualquier_caso_voy_a_seguir_utilizando_otro_paquete_estadístico,_¿merece_la_pena_el_esfuerzo_de_aprender_r"></div><h2>En cualquier caso voy a seguir utilizando otro paquete estadístico, ¿merece la pena el esfuerzo de aprender R?</h2>
+<p><strong>SÍ</strong>. Como ya hemos señalado más arriba, R incorpora muchos más procedimientos estadísticos que ningún otro de los paquetes estadísticos del mercado; además los nuevos procedimientos estadísticos se incorporan a R antes que a ningún otro programa por lo que solo estarán disponibles en R.</p>
+<p>Además, de hecho, SPSS ha decidido integrar R:</p>
+<p><br> <img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/SPSS-R.png" alt="SPSS-R"></p>
+<p><br> También SAS:</p>
+<p><br> <img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/SAS-R.png" alt="SAS-R"></p>
+<p><br> Y Statistica:</p>
+<p><br> <img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/Statistica-R.png" alt="Statistica-R"></p>
+<p><br> Por tanto, aunque utilicemos otro software, en algún momento necesitaremos R.</p>
+<p><br><br><br></p>
+<hr>
+</div>
+<div id="se-usa-r-fuera-de-la-universidad" class="section level2">
+<div name="¿se_usa_r_fuera_de_la_universidad" data-unique="¿se_usa_r_fuera_de_la_universidad"></div><h2>¿Se usa R fuera de la universidad?</h2>
+<p>La utilización de R se <a href="http://www.rexeranalytics.com/Data-Miner-Survey-Results-2013.html">incrementa constantemente</a>, no sólo en el <a href="http://r4stats.com/2012/05/09/beginning-of-the-end/">mundo académico</a> sino también en el <a href="http://r4stats.com/articles/popularity/">empresarial</a>. A medida que R vaya incrementando su presencia en la empresa, cabe esperar que se incremente también la demanda de profesionales que sepan utilizar este programa. Por ello la formación en R comienza a resultar imprescindible en cualquiera que tenga que aplicar profesionalmente la estadística.</p>
+<p>Ya en la actualidad son numerosas las demandas de empleo que requieren formación en R :</p>
+<p><a href="http://www.r-users.com/">Jobs for R-Users</a><br>
+<a href="http://www.programmingr.com/category/stype/r-job-listings/">R Job Listings</a><br>
+<a href="http://www.chanalyticsresearch.com/">Chanalytics Research</a><br>
+<a href="http://www.openanalytics.eu/jobs">Open Analytics</a><br>
+<a href="http://www.conclusiveanalytics.com/">conclusive Analytics</a><br>
+<a href="http://www.bluecrestcapital.com/">Blue Crest Capital</a><br>
+<a href="https://estadistica-dma.ulpgc.es/cursoR4ULPGC/www.basf.com/career">BASF</a> <a href="http://www.waltham.com/">Waltham Pet Nutrition</a><br>
+<a href="http://www.annafreud.org/jobs.php?id=359">Anna Freud Center</a><br>
+<a href="http://www.crescendobio.com/">Crescendo Bioscience</a><br>
+<a href="http://www.ecohealthalliance.org/careers/15-research_fellow">Ecohealth Alliance</a><br>
+<a href="http://www.mango-solutions.com/">Mango Solutions</a><br>
+<a href="http://www.fedeablogs.net/economia/?p=19984">Elecciones EEUU, 2012</a></p>
+<p><br><br></p>
+<p>Además empiezan a aparecer empresas que ofrecen servicios de gestión y mantenimiento de R en el ámbito empresarial. Ello facilita que muchas empresas que hasta ahora venían utilizando SAS, SPSS u otros paquetes de software comercial, migren a R ya que ahora empiezan a encontrar atención y soporte para los distintos problemas que se plantean en el día a día. Como ejemplos podemos citar a:</p>
+<ul>
+<li><p><a href="https://estadistica-dma.ulpgc.es/cursoR4ULPGC/1-presentacion.html">Revolution analytics</a>: esta empresa ofrece una versión de R <em>“con esteroides”</em> que permite gestionar bases de datos más grandes, programación distribuída en diversos ordenadores, etc. <a href="http://www.slideshare.net/RevolutionAnalytics/revolution-analytics-a-5minute-history">Una pequeña historia de esta empresa aquí</a>. Esta empresa fue adquirida por Microsoft en 2016 y ahora se denomina <a href="https://mran.microsoft.com/open">Microsoft-R</a>.</p></li>
+<li><p><a href="http://www.eoda.de/en/">Eoda</a>: empresa radicada en Alemania especializada en la migración de SPSS o SAS a R; ofrece además servicios de consultoría, formación y desrrollo de software “a medida”</p></li>
+<li><p><a href="http://www.teradata.com.es/News-Releases/2014/Teradata-Lifts-the-Limitations-on-Open-Source-R-Analytics/?LangType=1034&amp;LangSelect=true">Teradata</a>: <a href="http://www.marketingdirecto.com/actualidad/digital/teradata-amplia-la-capacidad-analitica-del-software-libre-r/">Nota de prensa</a> <br><br><br></p></li>
+</ul>
+<hr>
+</div>
+<div id="como-puedo-seguir-aprendiendo-r" class="section level2">
+<div name="¿como_puedo_seguir_aprendiendo_r" data-unique="¿como_puedo_seguir_aprendiendo_r"></div><h2>¿Como puedo seguir aprendiendo R?</h2>
+<ul>
+<li><p>Asistiendo a <a href="http://r-es.org/blog4-Cursos">cursos</a>, presenciales u online. En la actualidad, numerosas plataformas de enseñanza online ofrecen cursos de R, o cursos de estadística que emplean R como herramienta para el análisis de datos:</p>
+<ul>
+<li><a href="https://www.datacamp.com/">DataCamp</a></li>
+<li><a href="https://www.codeschool.com/courses/try-r">Code School</a></li>
+<li><a href="https://www.coursera.org/course/compdata">Computing for data analysis</a> Edición cerrada de momento.</li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li><p>Leyendo <a href="http://www.r-project.org/doc/bib/R-books.html">libros</a> y documentación en internet: <img src="./Presentación del Curso_ El entorno estadístico R (R4ULPGC)_files/muchosLibros.png" alt="librosR"></p>
+<ul>
+<li><a href="http://www.statmethods.net/">Quick-R</a>: métodos estadísticos con R.</li>
+<li><a href="http://rgm3.lab.nig.ac.jp/RGM/R_image_list?page=168&amp;init=true">R Graphical Manual</a>: gráficos</li>
+<li><a href="http://rcharts.io/gallery/">R Graph Gallery</a>: galería de gráficos que se pueden hacer con R y el código para obtenerlos.</li>
+<li><a href="http://cran.r-project.org/manuals.html">Manuales “oficiales”" en R-project.org</a></li>
+<li><a href="http://cran.r-project.org/other-docs.html">Otros Manuales en R-project</a></li>
+<li><a href="http://www.cyclismo.org/tutorial/R/">R-Tutorial Dpt. Mathematics Clarkson Univ</a></li>
+<li><a href="http://www.r-tutor.com/">R-Tutor</a></li>
+<li><a href="http://cran.r-project.org/doc/contrib/Lemon-kickstart/index.html">Kickstarting R</a></li>
+<li><a href="http://www.cookbook-r.com/">R Cookbook</a></li>
+<li><a href="http://www.sr.bham.ac.uk/~ajrs/R/index.html">Using R</a></li>
+<li><a href="http://adv-r.had.co.nz/">Advanced R (Programación en R)</a></li>
+<li><a href="http://www.noamross.net/blog/2012/10/5/ggplot-introduction.html">ggplot Tutorial</a></li>
+<li><a href="http://sape.inf.usi.ch/quick-reference/ggplot2">ggplot quick reference</a></li>
+<li><a href="http://luiscayuela.blogspot.com.es/">Curso de análisis de datos ecológicos en r</a></li>
+<li><a href="http://www.um.es/ae/FEIR/">Fundamentos estadísticos para investigación. Introducción a R.</a></li>
+<li><a href="http://www.harding.edu/fmccown/r/">Producing Simple Graphs with R</a></li>
+<li><a href="http://manuals.bioinformatics.ucr.edu/home/programming-in-r#TOC-Introduction">Programming in r</a></li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li>Estando al día de las novedades que se producen en el mundo de R: <a href="http://www.r-bloggers.com/">R-bloggers</a></li>
+</ul>
+<p><br></p>
+<ul>
+<li>Existe una comunidad de usuarios de R muy activa, en la que participan estadísticos de renombre, que se ha organizado en grupos de usuarios, en listas de correo, etc. Es muy fácil encontrar ayuda sobre R en la red a través de estas comunidades.</li>
+</ul>
+<p><br></p>
+<ul>
+<li>Sobre todo, <strong>¡usando R!</strong></li>
+</ul>
+<p><br><br><br></p>
+<hr>
+</div>
+<div id="debo-citar-r-si-lo-uso-en-mis-trabajos-o-publicaciones" class="section level2">
+<div name="¿debo_citar_r_si_lo_uso_en_mis_trabajos_o_publicaciones" data-unique="¿debo_citar_r_si_lo_uso_en_mis_trabajos_o_publicaciones"></div><h2>¿Debo citar R si lo uso en mis trabajos o publicaciones?</h2>
+<p><strong>¡SI!</strong>. R es software libre, y como tal, tanto el programa principal como las librerías disponibles pueden descargarse e instalarse sin coste económico. Los autores no cobran por el trabajo que supone desarrollar y mantener actualizado el programa. Es por ello que, cuando menos, si hemos utilizado R y algunas de sus librerías en los trabajos que publicamos debemos citarlo en las referencias. El comando <code>citation()</code> proporciona la forma correcta de citar R, en modo de texto plano (para incluir en documentos Word o similares) o en formato <em>.bib</em> para incluir en documentos latex:</p>
+<pre class="r"><code class="hljs">citation()</code></pre>
+<pre><code class="hljs">## 
+## To cite R in publications use:
+## 
+##   R Core Team (2018). R: A language and environment for
+##   statistical computing. R Foundation for Statistical Computing,
+##   Vienna, Austria. URL https://www.R-project.org/.
+## 
+## A BibTeX entry for LaTeX users is
+## 
+##   @Manual{,
+##     title = {R: A Language and Environment for Statistical Computing},
+##     author = {{R Core Team}},
+##     organization = {R Foundation for Statistical Computing},
+##     address = {Vienna, Austria},
+##     year = {2018},
+##     url = {https://www.R-project.org/},
+##   }
+## 
+## We have invested a lot of time and effort in creating R, please
+## cite it when using it for data analysis. See also
+## 'citation("pkgname")' for citing R packages.</code></pre>
+<p>Para citar una librería particular se usa <code>citation("nombre-librería")</code>. Por ejemplo, para citar el paquete <code>nlme</code>:</p>
+<pre class="r"><code class="hljs">citation(<span class="hljs-string">"nlme"</span>)</code></pre>
+<pre><code class="hljs">## 
+## Pinheiro J, Bates D, DebRoy S, Sarkar D, R Core Team (2018).
+## _nlme: Linear and Nonlinear Mixed Effects Models_. R package
+## version 3.1-137, &lt;URL: https://CRAN.R-project.org/package=nlme&gt;.
+## 
+## A BibTeX entry for LaTeX users is
+## 
+##   @Manual{,
+##     title = {{nlme}: Linear and Nonlinear Mixed Effects Models},
+##     author = {Jose Pinheiro and Douglas Bates and Saikat DebRoy and Deepayan Sarkar and {R Core Team}},
+##     year = {2018},
+##     note = {R package version 3.1-137},
+##     url = {https://CRAN.R-project.org/package=nlme},
+##   }</code></pre>
+<p><br><br><br></p>
+<hr>
+</div>
+<div id="tiene-r-presencia-en-las-redes-sociales." class="section level2">
+<div name="¿tiene_r_presencia_en_las_redes_sociales" data-unique="¿tiene_r_presencia_en_las_redes_sociales"></div><h2>¿Tiene R presencia en las redes sociales.?</h2>
+<hr>
+<p>Muchísima. R tiene actualmente una fuerte presencia en las redes sociales, y participar en ellas es la mejor manera de mantenerse al día con R.</p>
+<div id="blogs" class="section level5">
+<h5>Blogs</h5>
+<p><br></p>
+<ul>
+<li><p><a href="http://www.r-bloggers.com/">R-bloggers</a>: es un agregador de blogs que se actualiza constantemente. La manera más rápida de saber “qué hay de nuevo”. Rbloggers tiene también página en facebook (<a href="https://www.facebook.com/rbloggers" class="uri">https://www.facebook.com/rbloggers</a>), y cuenta en twitter (<span class="citation">@rbloggers</span>).</p></li>
+<li><p><a href="http://r-es.org/">Comunidad R-Hispano</a>: web de la asociación de usuarios de R en español.</p></li>
+</ul>
+<p><br></p>
+</div>
+<div id="facebook" class="section level5">
+<h5>Facebook</h5>
+<p><br></p>
+<ul>
+<li><p><a href="https://www.facebook.com/groups/rprojectsp/?fref=ts">R-project en español en facebook</a></p></li>
+<li><p><a href="https://www.facebook.com/groups/rusers/">R-users en facebook</a></p></li>
+<li><p><a href="https://www.facebook.com/groups/578433282242451/">R-programming en facebook</a></p></li>
+<li><p><a href="https://www.facebook.com/groups/13769077491/?fref=pb&amp;hc_location=profile_browser">R-Cran fan club en facebook</a></p></li>
+</ul>
+<p><br></p>
+</div>
+<div id="google" class="section level5">
+<h5>Google+</h5>
+<p><br></p>
+<ul>
+<li><a href="https://plus.google.com/u/0/communities/117681470673972651781">Statistics and R en google+</a></li>
+</ul>
+<p><br></p>
+</div>
+<div id="twitter" class="section level5">
+<h5>Twitter</h5>
+<p><br></p>
+<ul>
+<li><a href="https://twitter.com/hashtag/rstats">#rstats en Twitter</a></li>
+</ul>
+<p><br><br><br></p>
+<hr>
+</div>
+</div>
+<div id="como-estar-al-dia-con-las-actualizaciones-de-r" class="section level2">
+<div name="¿como_estar_al_día_con_las_actualizaciones_de_r" data-unique="¿como_estar_al_día_con_las_actualizaciones_de_r"></div><h2>¿Como estar al día con las actualizaciones de R?</h2>
+<hr>
+<p>R se actualiza un par de veces al año. En cualquier caso, en lo que suele ser más difícil estar al día no es tanto en la actualización del programa R en sí, sino en su ecosistema de librerías. La velocidad con que se construyen nuevas librerías en R es muy rápida y es muy difícil saber qué nuevas librerías hay, si resultan de nuestro interés, o incluso si se han producido mejoras importantes en librerías “antiguas”.</p>
+<p>En realidad la única forma de estar al día es consultando con cierta periodicidad los sitios web en que se ofrecen noticias sobre R (como R-bloggers) o suscribirse a grupos de R en Google+, Facebook o Twitter. Un sitio interesante que conviene también visitar periódicamente para estar al día es <a href="https://awesome-r.com/">awesome R</a>. Es un sitio donde se señalan las novedades más importantes que se producen en el entorno R cada año y donde, de manera ordenada, se presentan los paquetes imprescindibles según el tipo de análisis que queramos realizar.</p>
+<p><br><br><br></p>
+<hr>
+</div>
+<div id="puedo-utilizar-r-sin-instalarlo-en-el-ordenador" class="section level2">
+<div name="¿puedo_utilizar_r_sin_instalarlo_en_el_ordenador" data-unique="¿puedo_utilizar_r_sin_instalarlo_en_el_ordenador"></div><h2>¿Puedo utilizar R sin instalarlo en el ordenador?</h2>
+<p>Recientemente se han puesto en marcha algunas plataformas web que permiten ejecutar R directamente on-line, sin necesidad de descargarse e instalar el programa. Estas opciones resultan útiles para la “programación social”, la compartición rápida de código entre colaboradores, o simplemente para ejecutar R desde una tablet o un teléfono móvil.</p>
+<ul>
+<li><p><a href="http://www.r-fiddle.org/#/">R-fiddle</a>: dispone incluso de una app para Chrome, que facilita el acceso inmediato desde este navegador.</p></li>
+<li><p><a href="http://statace.com/">StatAce</a>: tiene una orientación más profesional; dispone de planes de pago para alquilar recursos de diferente capacidad, escalables según nuestras necesidades.</p></li>
+</ul>
+<p><br><br><br> <br><br><br></p>
+<hr>
+</div>
+<div id="adenda-puede-r-sustituir-a-matlab" class="section level2">
+<div name="adenda:_¿puede_r_sustituir_a_matlab" data-unique="adenda:_¿puede_r_sustituir_a_matlab"></div><h2>Adenda: ¿puede R sustituir a Matlab?</h2>
+<p>Depende:</p>
+<ul>
+<li><p>R y Matlab son lenguajes de programación multipropósito. El diseño de R es algo más moderno que el de Matlab, y la orientación a objetos le confiere ciertas ventajas. El uso de R a través de la interfaz que proporciona Rstudio no tiene nada que envidiar a la interfaz que ofrece Matlab.</p></li>
+<li><p>Prácticamente cualquier programa que pueda implementarse en Matlab, puede implementarse también en R, con una sintaxis muy similar. En <a href="http://mathesaurus.sourceforge.net/octave-r.html">R for matlab users</a> o en <a href="http://www.math.umaine.edu/~hiebeler/comp/matlabR.html">Matlab/R reference</a> pueden encontrarse un listado de funciones en Matlab y su equivalente en R. Existe además una librería de R (la librería <code>matlab</code>) que implementa en R funciones específicas de Matlab.</p></li>
+<li><p>El problema principal para los usuarios habituales de Matlab es la disposición de <em>toolboxes</em>. R dispone, como hemos dicho, de numerosas librerías; algunas, incluso, son transposiciones de <em>toolboxes</em> de Matlab, como la librería <code>Signal</code>, pero hay muchas otras que no tienen equivalente en R, en particular <em>Simulink</em> o la <em>Optimization toolbox</em>. Asimismo muchas compañías de <em>hardware</em> proporcionan interfaces en Matlab -y no en R- para la captura de datos en tiempo real.</p></li>
+<li><p>El usuario habitual de Matlab dispone de mucho código generado a través del tiempo que puede reutilizar en nuevos proyectos -del mismo modo que el usuario habitual de R reutiliza el código que ha generado. El paso de Matlab a R puede exigir la reescritura de muchas piezas de código.</p></li>
+</ul>
+</div>
+
+<br><br><br><br>
+<p> 
+
+</p>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+
+
+</body></html>
