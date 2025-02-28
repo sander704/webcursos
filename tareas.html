@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Completamiento de Trabajos Enviados al Curso de Datos</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- DataTables CSS -->
+  <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+  <style>
+    /* Estilos personalizados */
+    .entregado { background-color: #d4edda; } /* Verde claro */
+    .pendiente { background-color: #d11121; } /* Rojo claro */
+  </style>
+</head>
+<body>
+  <div class="container mt-4">
+    <h3 class="text-center">Completamiento de Trabajos Enviados al Curso de Datos</h3>
+    <p class="text-center">Este documento muestra el estado de las tareas y el trabajo final enviados por los estudiantes del curso de datos.</p>
+    
+    <!-- Tabla de datos -->
+    <div class="table-responsive">
+      <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Tarea 1 (27/02/2025)</th>
+            <th>Tarea 2 (06/03/2025)</th>
+            <th>Tarea 3 (13/03/2025)</th>
+            <th>Tarea 4 (20/03/2025)</th>
+            <th>Tarea 5 (27/03/2025)</th>
+            <th>Tarea 6 (03/04/2025)</th>
+            <th>Tarea 7 (10/04/2025)</th>
+            <th>Tarea 8 (17/04/2025)</th>
+            <th>Tarea 9 (24/04/2025)</th>
+            <th>Trabajo Final (16/04/2025)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>8 2 5 0 </td>
+            <td  style="color: #021302;" class="rojo">entregado</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>4 9 2 7 </td>
+            <td  style="color: #021302;" class="rojo">entregado</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>6 0 3 8 </td>
+            <td  style="color: #021302;" class="rojo">entregado</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>1 5 9 2 </td>
+            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>0 4 8 3 </td>
+            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>7 3 0 5 </td>
+            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2 6 4 1 </td>
+            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>5 8 7 0 </td>
+            <td  style="color: #021302;" class="rojo">entregado</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>9 1 6 4 </td>
+            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>3 0 8 2 </td>
+            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>6 7 1 9 </td>
+            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+         <tr>
+            <td>4 2 0 8 </td>
+            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- DataTables JS -->
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <!-- DataTables Spanish Language -->
+  <script src="https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Inicializar DataTables en español
+      $('#datatable').DataTable({
+        paging: true, // Habilitar paginación
+        searching: true, // Habilitar búsqueda
+        ordering: true, // Habilitar ordenamiento
+        info: true, // Mostrar información de la tabla
+        language: {
+          url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json" // Idioma español
+        }
+      });
+    });
+  </script>
+   <!-- codigos de entrega 
+  8 2 5 0 	yoservis								
+  4 9 2 7 	nelida								
+  6 0 3 8 	liumila							
+  1 5 9 2 	aime								
+  0 4 8 3 	fisiologo								
+  7 3 0 5 	idalmis								
+  2 6 4 1 	maso								
+  5 8 7 0 	aramis								
+  9 1 6 4 	birsy								
+  3 0 8 2 	castillo								
+  6 7 1 9 	raimy								
+  4 2 0 8   mercedita  -->
+  
+
+</body>
+</html>
