@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de Sesión</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding: 50px;
+      background-color: #f8f9fa; /* Color de fondo más suave */
+    }
+    .container {
+      background-color: aquamarine;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #0056b3; /* Color del título */
+    }
+    .tarea {
+      font-weight: bold; /* Negrita */
+      font-size: 1.5rem; /* Tamaño de fuente más grande */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center" style="color: black;">Curso Análisis de Datos</h1>
+    <h2 class="text-center">Revisión de Tareas</h2>
+    <form id="loginForm" class="mt-4">
+      <div class="mb-3">
+        <label for="username" class="form-label">Correo Electrónico</label>
+        <input type="email" class="form-control" id="username" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Continuar</button>
+      <div id="errorMessage" class="text-danger mt-3"></div>
+    </form>
+    <div id="documentos" class="mt-4" style="display: none;">
+      <h2>Mis Tareas</h2>
+      <div id="taskList"></div>
+    </div>
+  </div>
+
+  <script>
+    const usuarios = [
+      { username: "sander@gmail.com", password: "pass1" },
+      { username: "ys@gmail.com", password: "Gc9#sY2" },
+      { username: "gely21@gmail.com", password: "Gdf#sY44" },
+      { username: "nelidaccj@gmail.com", password: "qsc@3412" },
+      { username: "cmasosanchez@gmail.com", password: "Ht8?cL1" },
+      { username: "melvisgm0300@gmail.com", password: "Kp9@xR2" },
+      { username: "ludmila.martnezleyva@gmail.com", password: "Vq4@nZ7#" },
+      { username: "birsysuarez@infomed.sld.cu", password: "Jf3#rK6@" },
+      { username: "idalmisgutierrez@gmail.com", password: "Ys5@cT8" },
+      { username: "mercedeszamoramallet@gmail.com", password: "Bh7*wM2" },
+      { username: "aymeedamian@gmail.com", password: "Zx4%dL9" },
+      { username: "maylenj5@nauta.cu", password: "Jf3#rK6" },
+      { username: "alebor30@cujae.cu", password: "Rc1!nV6" },
+      { username: "anisleyrr@gmail.com", password: "Zx4%dL9" },
+      { username: "mercygisela@giron.cu", password: "Bh7wM2" },
+      { username: "krnogueraraujo@gmail.com", password: "Yd6!bS4" },
+      { username: "lisetbaromar@gmail.com", password: "Fp2%uM9" },
+      { username: "musibay5@gmail.com", password: "pRw7tN5" },
+      { username: "aramislopez@gmail.com", password: "Xk3@hD8" },
+      { username: "raimy1970@gmail.com", password: "Gp8#lZ2" },
+      { username: "leyai561@gmail.com", password: "Gp8#lZ2" },
+      { username: "fisiologo20@gmail.com", password: "jH4@xR9" }
+    ];
+
+    const tareasPorUsuario = {
+      "sander@gmail.com": [
+        { nombre: "Tarea 1", enlace: "https://drive.google.com/file/d/1Ejemplo1/view" },
+        { nombre: "Tarea 2", enlace: "https://drive.google.com/file/d/2Ejemplo2/view" }
+      ],
+      "ys@gmail.com": [
+        { nombre: "Tarea 1", enlace: "https://drive.google.com/file/d/1K-C0wl-1NTX7k4jaK5FjVZEqYECoRdnU/view?usp=drive_link" }
+      ],
+      "gely21@gmail.com": [
+        { nombre: "Tarea 4", enlace: "https://drive.google.com/file/d/4Ejemplo4/view" }
+      ],
+      "nelidaccj@gmail.com": [
+        { nombre: "Tarea 1", enlace: "https://drive.google.com/file/d/1KrpHOdENizS0kYjsS4TzxewNku_dB5rV/view?usp=drive_link" }
+      ],
+      "ludmila.martnezleyva@gmail.com": [
+        { nombre: "Tarea 1", enlace: "https://drive.google.com/file/d/17EwbecClwTA5iO4mslHtmbWY-Yt79aSQ/view?usp=drive_link" }
+      ],
+      // Agrega más tareas para otros usuarios según sea necesario
+    };
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const errorMessage = document.getElementById("errorMessage");
+
+      // Verificar credenciales
+      const usuario = usuarios.find(user => user.username === username && user.password === password);
+      if (usuario) {
+        errorMessage.textContent = '';
+        mostrarTareas(username);
+      } else {
+        errorMessage.textContent = 'Credenciales incorrectas. Inténtalo de nuevo.';
+      }
+    });
+
+    function mostrarTareas(usuario) {
+      const taskList = document.getElementById("taskList");
+      const tareas = tareasPorUsuario[usuario] || [];
+      taskList.innerHTML = ''; // Limpiar lista de tareas
+
+      if (tareas.length === 0) {
+        taskList.innerHTML = '<p>No tienes tareas disponibles.</p>';
+      } else {
+        tareas.forEach(tarea => {
+          const div = document.createElement('div');
+          div.innerHTML = `<a href="${tarea.enlace}" target="_blank">${tarea.nombre}</a>`;
+          taskList.appendChild(div);
+        });
+      }
+
+      document.getElementById("documentos").style.display = 'block'; // Mostrar sección de tareas
+    }
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
