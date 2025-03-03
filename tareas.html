@@ -10,8 +10,73 @@
   <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
   <style>
     /* Estilos personalizados */
-    .entregado { background-color: #d4edda; } /* Verde claro */
-    .pendiente { background-color: #d11121; } /* Rojo claro */
+    .entregado { 
+      background-color: #d4edda; 
+      color: #155724;
+      font-weight: 500;
+      text-align: center;
+      padding: 8px;
+      border-radius: 4px;
+    }
+    
+    .pendiente { 
+      background-color: #f8d7da; 
+      color: #721c24;
+      font-weight: 500;
+      text-align: center;
+      padding: 8px;
+      border-radius: 4px;
+    }
+
+    .revisado {
+      background-color: #cce5ff;
+      color: #004085;
+      font-weight: 500;
+      text-align: center;
+      padding: 8px;
+      border-radius: 4px;
+    }
+
+    .revisado a {
+      color: #004085;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .revisado a:hover {
+      text-decoration: underline;
+    }
+
+    #datatable {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    #datatable thead th {
+      background-color: #f8f9fa;
+      font-weight: 600;
+      text-align: center;
+      padding: 12px;
+    }
+
+    #datatable tbody td {
+      vertical-align: middle;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
+
+    h3 {
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+    }
+
+    .table-responsive {
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -40,7 +105,8 @@
         <tbody>
           <tr>
             <td>8 2 5 0 </td>
-       <td  style="color: #021302;" class="rojo"> <a href="1revisiontar.html">Revisado</a></td>
+            <td class="revisado"><a href="1revisiontar.html">Revisado</a></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -52,7 +118,8 @@
           </tr>
           <tr>
             <td>4 9 2 7 </td>
-          <td  style="color: #021302;" class="rojo"> <a href="1revisiontar.html">Revisado</a></td>
+            <td class="revisado"><a href="1revisiontar.html">Revisado</a></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -64,7 +131,8 @@
           </tr>
           <tr>
             <td>6 0 3 8 </td>
-          <td  style="color: #021302;" class="rojo"> <a href="1revisiontar.html">Revisado</a></td>
+            <td class="revisado"><a href="1revisiontar.html">Revisado</a></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -76,7 +144,8 @@
           </tr>
           <tr>
             <td>1 5 9 2 </td>
-            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td class="pendiente">pendiente</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -88,7 +157,8 @@
           </tr>
           <tr>
             <td>0 4 8 3 </td>
-            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td class="pendiente">pendiente</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -100,7 +170,8 @@
           </tr>
           <tr>
             <td>7 3 0 5 </td>
-            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td class="pendiente">pendiente</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -112,7 +183,8 @@
           </tr>
           <tr>
             <td>2 6 4 1 </td>
-            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td class="pendiente">pendiente</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -124,7 +196,8 @@
           </tr>
           <tr>
             <td>5 8 7 0 </td>
-            <td  style="color: #021302;" class="rojo">entregado</td>
+            <td class="entregado">entregado</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -136,7 +209,8 @@
           </tr>
           <tr>
             <td>9 1 6 4 </td>
-            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td class="pendiente">pendiente</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -148,7 +222,8 @@
           </tr>
           <tr>
             <td>3 0 8 2 </td>
-            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td class="pendiente">pendiente</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -160,7 +235,8 @@
           </tr>
           <tr>
             <td>6 7 1 9 </td>
-            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td class="pendiente">pendiente</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -170,9 +246,10 @@
             <td></td>
             <td></td>
           </tr>
-         <tr>
+          <tr>
             <td>4 2 0 8 </td>
-            <td  style="color: #f74141;" class="rojo">pendiente</td>
+            <td class="pendiente">pendiente</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
