@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisión de Trabajo Independiente</title>
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --primary-hover: #1557b0;
+            --error-color: #dc3545;
+            --success-color: #28a745;
+            --text-color: #333;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2, h3 {
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .users-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .user-card, .task-card {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .user-card:hover, .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .user-email, .task-title {
+            color: var(--text-color);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .task-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .back-button {
+            background-color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .users-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Revisión de Trabajo Independiente</h2>
+        <div class="users-grid" id="usersGrid"></div>
+    </div>
+
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Ingrese su contraseña</h3>
+            <form id="passwordForm">
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" required>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+                <button type="submit">Verificar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="tasksModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Seleccione una Tarea</h3>
+            <div class="users-grid" id="tasksGrid"></div>
+        </div>
+    </div>
+
+    <script>
+        const users = {
+            "ys@gmail.com": { 
+                password: "Gc9#sY2", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url: "https://drive.google.com/file/d/1oq57enwcznInADuXPw2r1szkMERU4-mu/view?usp=drive_link" },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" },
+                    { title: "Tarea 3", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" },
+                    { title: "Tarea 4", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" },
+                    { title: "Tarea 5", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" }
+                ]
+            },
+            "nelidaccj@gmail.com": { 
+                password: "qsc@3412", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url: "https://drive.google.com/file/d/1KrpHOdENizS0kYjsS4TzxewNku_dB5rV/view?usp=drive_link" },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo2" },
+                    { title: "Tarea 3", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" },
+                    { title: "Tarea 4", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" },
+                    { title: "Tarea 5", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" }
+                ]
+            },
+            "cmasosanchez@gmail.com": { 
+                password: "Ht8?cL1", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo3" },
+                    { title: "Tarea 3", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" },
+                    { title: "Tarea 4", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" },
+                    { title: "Tarea 5", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" }
+                ]
+            },
+            "ludmila.martnezleyva@gmail.com": { 
+                password: "Vq4@nZ7#", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url: "https://drive.google.com/file/d/17EwbecClwTA5iO4mslHtmbWY-Yt79aSQ/view?usp=drive_link" },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo4" },
+                    { title: "Tarea 3", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" },
+                    { title: "Tarea 4", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" },
+                    { title: "Tarea 5", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" }
+                ]
+            },
+            "birsysuarez@infomed.sld.cu": { 
+                password: "Jf3#rK6@", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url:  "https://drive.google.com/drive/folders/1Ejemplo5"  },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo5" }
+                ]
+            },
+            "idalmisgutierrez@gmail.com": { 
+                password: "Ys5@cT8", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url:  "https://drive.google.com/drive/folders/1Ejemplo5" },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo6" }
+                ]
+            },
+            "aymeedamian@gmail.com": { 
+                password: "Zx4%dL9", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url:  "https://drive.google.com/drive/folders/1Ejemplo7"  },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo7" }
+                ]
+            },
+            "maylenj5@nauta.cu": { 
+                password: "Jf3#rK6", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url: "https://drive.google.com/drive/folders/1Ejemplo18" },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo8" }
+                ]
+            },
+            "alebor30@cujae.cu": { 
+                password: "Rc1!nV6", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url: "https://drive.google.com/drive/folders/1Ejemplo19" },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo9" }
+                ]
+            },
+            "anisleyrr@gmail.com": { 
+                password: "Zx4%dL9", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url: "https://drive.google.com/drive/folders/1Ejemplo20" },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo10" }
+                ]
+            },
+            "mercygisela@giron.cu": { 
+                password: "Bh7wM2", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url: "https://drive.google.com/drive/folders/1Ejemplo21" },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo11" }
+                ]
+            },
+            "lisetbaromar@gmail.com": { 
+                password: "Fp2%uM9", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url: "https://drive.google.com/drive/folders/1Ejemplo22" },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo12" }
+                ]
+           
+            },
+            "aramislopez@gmail.com": { 
+                password: "Xk3@hD8", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url:   "https://drive.google.com/drive/folders/1Ejemplo14"  },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo14" }
+                ]
+            },
+            "raimy1970@gmail.com": { 
+                password: "Gp8#lZ2", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url:  "https://drive.google.com/drive/folders/1Ejemplo15"  },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo15" }
+                ]
+            },
+            "leyai561@gmail.com": { 
+                password: "Gp8#lZ2", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url: "https://drive.google.com/drive/folders/1Ejemplo24" },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo16" }
+                ]
+            },
+            "fisio20@gmail.com": { 
+                password: "jH4@xR9", 
+                tasks: [
+                    { title: "Tarea 1", description: "Primera tarea", url: "https://drive.google.com/file/d/1UjErhClUM9X4qye2Fpgo8IobLrOKepO7/view?usp=drive_link" },
+                    { title: "Tarea 2", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo17" },
+                    { title: "Tarea 3", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" },
+                    { title: "Tarea 4", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" },
+                    { title: "Tarea 5", description: "Segunda tarea", url: "https://drive.google.com/drive/folders/1Ejemplo1" }
+                ]
+            }
+        };
+
+        let selectedUser = null;
+        const passwordModal = document.getElementById('passwordModal');
+        const tasksModal = document.getElementById('tasksModal');
+        const closeModals = document.querySelectorAll('.close-modal');
+        const passwordForm = document.getElementById('passwordForm');
+        const passwordError = document.getElementById('passwordError');
+        const tasksGrid = document.getElementById('tasksGrid');
+
+        // Crear tarjetas de usuarios
+        const usersGrid = document.getElementById('usersGrid');
+        Object.keys(users).forEach(email => {
+            const userCard = document.createElement('div');
+            userCard.className = 'user-card';
+            userCard.innerHTML = `<p class="user-email">${email}</p>`;
+            userCard.addEventListener('click', () => {
+                selectedUser = email;
+                passwordModal.style.display = 'flex';
+            });
+            usersGrid.appendChild(userCard);
+        });
+
+        // Cerrar modales
+        closeModals.forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                passwordModal.style.display = 'none';
+                tasksModal.style.display = 'none';
+                passwordForm.reset();
+                passwordError.style.display = 'none';
+            });
+        });
+
+        // Cerrar modales al hacer clic fuera
+        window.addEventListener('click', (e) => {
+            if (e.target === passwordModal || e.target === tasksModal) {
+                passwordModal.style.display = 'none';
+                tasksModal.style.display = 'none';
+                passwordForm.reset();
+                passwordError.style.display = 'none';
+            }
+        });
+
+        // Manejar envío del formulario de contraseña
+        passwordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            
+            if (users[selectedUser].password === password) {
+                passwordModal.style.display = 'none';
+                showTasks(selectedUser);
+                tasksModal.style.display = 'flex';
+            } else {
+                passwordError.textContent = 'Contraseña incorrecta';
+                passwordError.style.display = 'block';
+            }
+        });
+
+        // Mostrar tareas del usuario
+        function showTasks(email) {
+            tasksGrid.innerHTML = '';
+            const userTasks = users[email].tasks;
+            
+            userTasks.forEach(task => {
+                const taskCard = document.createElement('div');
+                taskCard.className = 'task-card';
+                taskCard.innerHTML = `
+                    <p class="task-title">${task.title}</p>
+                    <p class="task-description">${task.description}</p>
+                `;
+                taskCard.addEventListener('click', () => {
+                    window.location.href = task.url;
+                });
+                tasksGrid.appendChild(taskCard);
+            });
+        }
+    </script>
+</body>
+</html>
